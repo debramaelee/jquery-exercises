@@ -1,30 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tic Tac Toe</title>
-	<link href="https://fonts.googleapis.com/css?family=Crafty+Girls" rel="stylesheet">
-	<script src="jquery.js"></script>
-
-	<script>
-
-
 
 	$(function() {
-
+	
 		var clicks = 0;
 		var boxVal = '';
 		var val = '';
 
-
       	$('button').click(function() {
-    
+//assigns tiles & prevent placement in tile already assigned
 	      	if ($(this).text() === "") {
 	      	clicks += 1;
 	      	}
+//assigns -1 value for O placement
 	        if ($(this).text() === "" && clicks % 2 !== 0) {
 	        	$(this).text('0');
 	        	$(this).attr('boxVal', '-1');
 	        } 
+//assigns 1 value for X placement
 	        if ($(this).text() === "" && clicks % 2 == 0) {
 	         	$(this).text('X');
 	         	$(this).attr('boxVal', '1');
@@ -38,7 +29,7 @@
 			//  	console.log('Winner is O');
 			//  }
 
-
+// check X winner
 			if (
 			Number($('#btn1').attr('boxVal')) + Number($('#btn2').attr('boxVal')) + Number($('#btn3').attr('boxVal')) === 3  ||
 			Number($('#btn4').attr('boxVal')) + Number($('#btn5').attr('boxVal')) + Number($('#btn6').attr('boxVal')) === 3 ||
@@ -49,8 +40,10 @@
 			Number($('#btn1').attr('boxVal')) + Number($('#btn5').attr('boxVal')) + Number($('#btn9').attr('boxVal')) === 3 ||
 			Number($('#btn3').attr('boxVal')) + Number($('#btn5').attr('boxVal')) + Number($('#btn7').attr('boxVal')) === 3 ) {
 				console.log('Winner is X!');
+				$('#message').text('The winner is X!!!');
 			}
 
+//check O winner
 			if (
 			Number($('#btn1').attr('boxVal')) + Number($('#btn2').attr('boxVal')) + Number($('#btn3').attr('boxVal')) === -3  ||
 			Number($('#btn4').attr('boxVal')) + Number($('#btn5').attr('boxVal')) + Number($('#btn6').attr('boxVal')) === -3 ||
@@ -61,135 +54,20 @@
 			Number($('#btn1').attr('boxVal')) + Number($('#btn5').attr('boxVal')) + Number($('#btn9').attr('boxVal')) === -3 ||
 			Number($('#btn3').attr('boxVal')) + Number($('#btn5').attr('boxVal')) + Number($('#btn7').attr('boxVal')) === -3 ) {
 				console.log('Winner is O!');
+				$('#message').text('The winner is O!!!');
 			}
-       
+
+// check draw
+			if (clicks >= 9) {
+				console.log("It's a draw!");
+				$('#message').text("It's a draw!");
+			}
                	
     	})
 
-    	
-     
-        
         //winner check -> array or variables with all conditionals
         // $('.box').map(function() {return $(this). text();})
-        // -> return 1 dimensional array list of values
-
-
-
-
-
-  
-
-		
+        // -> return 1 dimensional array list of values	
 
 	})
 
-
-
-	</script>
-
- 
-	<style>
-
-	body {
-		text-align:center;
-		background-color: turquoise;
-		font-family: 'Crafty Girls', cursive;
-	}
-
-	.box {
-		width: 125px;
-		height: 125px;
-		font-size: 5em;
-		border: none;
-		outline: 0;
-		background-color: turquoise;
-		font-family: 'Crafty Girls', cursive;
-	}
-
-	#box5 {
-		border: 5px dashed black;
-	}
-
-	#box4 {
-		border-top: 5px dashed black;
-		border-bottom: 5px dashed black;
-	}
-
-	#box6 {
-		border-top: 5px dashed black;
-		border-bottom: 5px dashed black;
-	}
-
-	#box2 {
-		border-left: 5px dashed black;
-		border-right: 5px dashed black;
-	}
-
-	#box8 {
-		border-left: 5px dashed black;
-		border-right: 5px dashed black;
-	}
-
-	.gameboard {
-		display: inline-block;
-		background-color: turquoise;
-	}
-
-	</style>
-
-</head>
-
-<body>
-
-<h1>Tic Tac Toe</h1>
- <table class = "gameboard">
- 	<div id="row1">
-	 	<tr>
-	 	
-	 		<td id = "box1">
-	 			<button class="box" id ="btn1"></button>
-	 		</td>
-	 		<td id = "box2">
-	 			<button class="box" id ="btn2"></button>
-	 		</td>
-	 		<td id = "box3">
-	 			<button class="box" id ="btn3"></button>
-	 		</td>
-	 	
-	 	</tr>
-	 	</div>
-	 
-	<div id ="row2">
- 	<tr>
- 		<td id = "box4">
- 			<button class="box" id ="btn4"></button>
- 		</td>
- 		<td id = "box5">
- 			<button class="box" id ="btn5"></button>
- 		</td>
- 		<td id = "box6">
- 			<button class="box" id ="btn6"></button>
- 		</td>
- 	</tr>
- 	</div>
-
- 	<div id="row3">
- 	<tr>
- 		<td id = "box7">
- 			<button class="box" id ="btn7"></button>
- 		</td>
- 		<td id = "box8">
- 			<button class="box" id ="btn8"></button>
- 		</td>
- 		<td id = "box9">
- 			<button class="box" id ="btn9"></button>
- 		</td>
- 	</tr>
- 	</div>
-
- </table>
-
-
-
-</body>
-</html>
